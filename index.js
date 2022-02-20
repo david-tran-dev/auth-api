@@ -14,6 +14,7 @@ mongoose.connect(process.env.MONGODB_CONNECTION)
 
 const app = express();
 app.use(cors({
+  credentials: true,
   origin: 'http://localhost:3000',
   metohds: ['GET', 'POST'],
 }));
@@ -22,6 +23,7 @@ app.use(cookieParser());
 app.use(router);
 
 app.get('/set-cookies', (req, res) => {
+  console.log('coucou');
   res.cookie('newUser', true, { httpOnly: true });
   res.send('got a cookie');
 });
